@@ -60,10 +60,7 @@ function updateTask(name, description, key) {
         date: dateActuality()
     };
 
-    var updates = {};
-    updates['/' + uid]=datos;
-
-  db.update(updates);
+  db('/', key).update(datos);
 }
 
 function onClickUpdate() {
