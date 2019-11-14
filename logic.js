@@ -1,4 +1,4 @@
-const db = firebase.database().ref();
+const db = firebase.database().ref().child('task/');
 
 //let refToData = data.ref();
 //let dataRef = db.ref("task");
@@ -33,7 +33,7 @@ function dateActuality() {
   );
 }
 function insertTask(name, description) {
-  db('task/').push({
+  db.push({
     name: name,
     description: description,
     date: dateActuality()
@@ -119,7 +119,7 @@ function viewDataUpdate(name, description, key) {
   inHTML("editData", response);
   update.disabled = false;
 }
-var reference = db.ref("task/");
+var reference = db;
 reference.on("value", function(datas) {
   var data = datas.val();
   $.each(data, function(nodo, value) {
