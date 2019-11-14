@@ -1,7 +1,7 @@
 const db = firebase.database().ref();
 
-let refToData = data.ref();
-let dataRef = db.ref("task");
+//let refToData = data.ref();
+//let dataRef = db.ref("task");
 
 var update = document.getElementById("update");
 update.disabled = true;
@@ -33,8 +33,7 @@ function dateActuality() {
   );
 }
 function insertTask(name, description) {
-  //db.ref('task/')
-  dataRef.push({
+  db('task/').push({
     name: name,
     description: description,
     date: dateActuality()
