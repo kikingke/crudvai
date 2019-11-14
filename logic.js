@@ -53,7 +53,7 @@ function onClickInsert() {
   }
 }
 function updateTask(name, description, key) {
-  db.ref("task/" + key).update({
+  db("" + key).update({
     name: name,
     description: description,
     date: dateActuality()
