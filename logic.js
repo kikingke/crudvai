@@ -60,7 +60,8 @@ function updateTask(name, description, key) {
         date: dateActuality()
     };
 
-  db('/', key).update(datos);
+  // db('/', key).update(datos);
+  db.update(datos);
 }
 
 function onClickUpdate() {
