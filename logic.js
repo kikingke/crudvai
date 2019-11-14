@@ -1,7 +1,7 @@
 const db = firebase.database();
 
 let refToData = data.ref();
-let dataRef = database.ref("task");
+let dataRef = db.ref("task");
 
 var update = document.getElementById("update");
 update.disabled = true;
