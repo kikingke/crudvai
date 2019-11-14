@@ -1,4 +1,4 @@
-const db = firebase.database().ref().child('task/');
+const db = firebase.database().ref().child("task/");
 
 //let refToData = data.ref();
 //let dataRef = db.ref("task");
@@ -53,12 +53,19 @@ function onClickInsert() {
   }
 }
 function updateTask(name, description, key) {
-  db("" + key).update({
-    name: name,
-    description: description,
-    date: dateActuality()
-  });
+
+    var datos = {
+        name: name,
+        description: description,
+        date: dateActuality()
+    };
+
+    var updates = {};
+    updates['/' + uid]=datos;
+
+  db.update(updates);
 }
+
 function onClickUpdate() {
   var name = value("nameEdit");
   var description = value("descEdit");
