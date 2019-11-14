@@ -1,4 +1,4 @@
-const db = firebase.database();
+const db = firebase.database().ref();
 
 let refToData = data.ref();
 let dataRef = db.ref("task");
