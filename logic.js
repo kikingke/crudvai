@@ -1,4 +1,7 @@
-const db = firebase.database().ref().child("task/");
+const db = firebase
+  .database()
+  .ref();
+
 
 //let refToData = data.ref();
 //let dataRef = db.ref("task");
@@ -33,7 +36,7 @@ function dateActuality() {
   );
 }
 function insertTask(name, description) {
-  db.push({
+  db.child("task/").push({
     name: name,
     description: description,
     date: dateActuality()
@@ -53,15 +56,12 @@ function onClickInsert() {
   }
 }
 function updateTask(name, description, key) {
-
-    var datos = {
-        name: name,
-        description: description,
-        date: dateActuality()
-    };
-
-  // db('/', key).update(datos);
-  db.update(datos);
+  var datos = {
+    name: name,
+    description: description,
+    date: dateActuality()
+  };
+  db.child("task/"+key).update(datos);
 }
 
 function onClickUpdate() {
@@ -81,7 +81,7 @@ function onClickUpdate() {
 function removeTask(key) {
   if (confirm("¿you want to delete task?")) {
     inHTML("loadTable", "");
-    db.ref("task/" + key).remove();
+    db.child("task/" + key).remove();
   }
 }
 function table(name, description, date, key) {
@@ -124,7 +124,7 @@ function viewDataUpdate(name, description, key) {
   inHTML("editData", response);
   update.disabled = false;
 }
-var reference = db;
+var reference = db.child("task/");
 reference.on("value", function(datas) {
   var data = datas.val();
   $.each(data, function(nodo, value) {
